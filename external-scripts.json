@@ -1,4 +1,7 @@
 [
   "hubot-diagnostics",
-  "hubot-heroku-keepalive"
+  "hubot-help",
+  "hubot-heroku-keepalive",
+  "hubot-pugme",
+  "hubot-redis-brain"
 ]
