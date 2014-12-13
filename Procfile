@@ -1,1 +1,1 @@
-web: bin/hubot -a twitter-userstream -n pobot
+web: bin/hubot -a twitter-userstream
