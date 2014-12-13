@@ -1,14 +1,2 @@
 .DS_Store*
-.hubot_history
 .env
-node_modules/hubot-google-images
-node_modules/hubot-google-translate
-node_modules/help
-node_modules/hubot-heroku-keepalive
-node_modules/hubot-maps
-node_modules/hubot-pugme
-node_modules/hubot-redis-brain
-node_modules/hubot-rules
-node_modules/hubot-scripts
-node_modules/hubot-shipit
-node_modules/hubot-youtube
