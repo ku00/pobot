@@ -213,6 +213,19 @@ cure_nishikino = [
   "がんばっているかね？？？？？"
 ]
 
+parizon = '''
+
+      　　　 ／⌒ヽ　　
+      　　　(平ω井)　＜ さっぱりぞんだ…
+      　＿ノ ヽ　ノ ＼＿
+      `/　`/ ⌒Ｙ⌒ Ｙ　 ヽ
+      ( 　(三ヽ人　 /　　 | 
+      |　ﾉ⌒＼ ￣￣ヽ　 ノ 
+      ヽ＿＿＿＞､＿＿_／ 
+      　　 ｜( 王 ﾉ〈 
+
+'''
+
 module.exports = (robot) ->
   robot.receive = (msg) ->
     console.log msg
@@ -237,11 +250,10 @@ module.exports = (robot) ->
 
     text = msg.text
     date = Date.now()
-    if /hoge/.test(text)
-      robot.logger.info "reply #{user_name}! hoge"
-      robot.adapter.reply envelope.tweet, "ほげほげ - #{date}"
-    else if /しゃべって/.test(text)
+    if /しゃべって/.test(text)
       bot_msg = cure_nishikino[ Math.floor(Math.random() * cure_nishikino.length) ]
- 
       robot.logger.info "reply #{user_name}! しゃべって"
       robot.adapter.reply envelope.tweet, "#{bot_msg} - #{date}"
+    else if /ぱりぞん/.test(text)
+      robot.logger.info "reply #{user_name}! ぱりぞん"
+      robot.adapter.reply envelope.tweet, "#{parizon} - #{date}"
