@@ -6,7 +6,8 @@
   "description": "A simple helpful robot for your Company",
   "dependencies": {
     "dotenv": "0.4.0",
-    "hubot-twitter-userstream": "0.0.3"
+    "hubot-twitter-userstream": "0.0.3",
+    "cron": "~1.0.5"
   },
   "engines": {
     "node": "0.10.x"

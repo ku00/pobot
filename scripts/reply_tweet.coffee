@@ -2,10 +2,10 @@
 #   Pobot replies one article of Pocket.
 #
 # Commands:
-#   ぽけっと(ポケット, pocket) - You reply with one article of pocket When you post a "ぽけっと" word.
+#   ぽけっと(ポケット, pocket) - You reply with one article of Pocket When you post a "ぽけっと" word.
 #
 # Notes:
-#   Pocket APIを使ってPocketに保存されている記事をランダムで一つ返します。
+#   Pocket APIを使ってPocketに保存されている記事を返します。
 #   なお、知らない人には平井神様AAを返します。
 
 TOTAL_ARTICLES_NUM = 590  # 2014_1221
