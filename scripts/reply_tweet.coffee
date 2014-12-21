@@ -1,7 +1,15 @@
 # Description:
-#   pobot main script
+#   Pobot replies one article of Pocket.
+#
+# Commands:
+#   ぽけっと(ポケット, pocket) - You reply with one article of pocket When you post a "ぽけっと" word.
+#
+# Notes:
+#   Pocket APIを使ってPocketに保存されている記事をランダムで一つ返します。
+#   なお、知らない人には平井神様AAを返します。
 
-parizon = '''
+TOTAL_ARTICLES_NUM = 590  # 2014_1221
+PARISON_AA = '''
 
       　　　 ／⌒ヽ　　
       　　　(平ω井)　＜ さっぱりぞんだ…
@@ -13,16 +21,6 @@ parizon = '''
       　　 ｜( 王 ﾉ〈 
 
 '''
-
-total_posts = 590  # 2014_1221
-offset = Math.floor((total_posts - 1) * Math.random())
-query = JSON.stringify({
-  consumer_key: process.env.POCKET_CONSUMER_KEY,
-  access_token: process.env.POCKET_ACCESS_TOKEN,
-  state: 'all',
-  count: 1,
-  offset: offset
-})
 
 module.exports = (robot) ->
   robot.receive = (msg) ->
@@ -49,8 +47,17 @@ module.exports = (robot) ->
     if /(ぽけっと|ポケット|pocket)/.test(text)
       unless user_name == process.env.MASTER_USER
         robot.logger.info "reply #{user_name}! ぱりぞん"
-        robot.adapter.reply envelope.tweet, "#{parizon}"
+        robot.adapter.reply envelope.tweet, "#{PARISON_AA}"
         return
+
+      offset = Math.floor((TOTAL_ARTICLES_NUM - 1) * Math.random())
+      query = JSON.stringify({
+        consumer_key: process.env.POCKET_CONSUMER_KEY,
+        access_token: process.env.POCKET_ACCESS_TOKEN,
+        state: 'all',
+        count: 1,
+        offset: offset
+      })
 
       robot.http("https://getpocket.com/v3/get")
         .header('Content-Type', 'application/json')
