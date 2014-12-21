@@ -45,9 +45,13 @@ module.exports = (robot) ->
     }
 
     text = msg.text
-    date = Date.now()
 
-    if /ポケット/.test(text)
+    if /(ぽけっと|ポケット|pocket)/.test(text)
+      unless user_name == process.env.MASTER_USER
+        robot.logger.info "reply #{user_name}! ぱりぞん"
+        robot.adapter.reply envelope.tweet, "#{parizon}"
+        return
+
       robot.http("https://getpocket.com/v3/get")
         .header('Content-Type', 'application/json')
         .post(query) (err, res, body) ->
@@ -55,14 +59,10 @@ module.exports = (robot) ->
           try
             data = JSON.parse(body)
           catch error
-            robot.logger.info "Ran into an error parsing JSON :("
+            robot.logger.error "Ran into an error parsing JSON :("
             return
 
           for _, val of data.list
             bot_msg = "#{val.resolved_title} #{val.resolved_url}"
           robot.logger.info "reply #{user_name}! pocket"
           robot.adapter.reply envelope.tweet, "#{bot_msg}"
-
-    else if /ぱりぞん/.test(text)
-      robot.logger.info "reply #{user_name}! ぱりぞん"
-      robot.adapter.reply envelope.tweet, "#{parizon}"
